@@ -22,8 +22,8 @@ def main():
         if sound not in animal_sound:
             fox_says.append(sound)
 
-    print("what the fox says: " + ' '.join(fox_says))
-    print("also heard: " + ' '.join(also_heard))
+    print("what the fox says: " + ' '.join(fox_says) + " ")
+    print("also heard: " + ' '.join(also_heard) + " ")
 
 if __name__ == "__main__":
     main()
