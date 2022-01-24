@@ -51,7 +51,10 @@ def main():
                         fox_words.remove(sound)
     """
     print("what the fox says: " + ' '.join(fox_says) + " ") 
-    print("also heard:" + ' '.join(heard_list) + " ")
+    if heard_list:
+        print("also heard: " + ' '.join(heard_list) + " ")
+    else:
+        print("also heard: ")
 
 if __name__ == "__main__":
     main()

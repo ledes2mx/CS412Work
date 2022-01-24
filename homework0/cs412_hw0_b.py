@@ -23,7 +23,10 @@ def main():
             fox_says.append(sound)
 
     print("what the fox says: " + ' '.join(fox_says) + " ")
-    print("also heard: " + ' '.join(also_heard) + " ")
+    if also_heard:
+        print("also heard: " + ' '.join(also_heard) + " ")
+    else:
+        print("also heard: ")
 
 if __name__ == "__main__":
     main()
