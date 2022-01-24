@@ -24,6 +24,7 @@ def main():
     #print (fox_says)
 
     for sound in sayings:
+        # if sound in sound_list and :
         if sound_list.count(sound) > 0 and heard_list.count(animal_list[sound_list.index(sound)]) == False:
             heard_list.append(animal_list[sound_list.index(sound)])
     #print(heard_list)
@@ -49,12 +50,8 @@ def main():
                     for heard in fox_words:
                         fox_words.remove(sound)
     """
-    heard = " "
-    also_heard = " "
-    print("what the fox says: " + heard.join(fox_says)) 
-    print()
-    print("also heard: " + also_heard.join(heard_list))
-    print()
+    print("what the fox says: " + ' '.join(fox_says)) 
+    print("also heard: " + ' '.join(heard_list))
 
 if __name__ == "__main__":
     main()
