@@ -24,7 +24,9 @@ def main():
     fox = " "
     others = " "
     print("what the fox says: " + fox.join(fox_says))
+    print()
     print("also heard: " + others.join(also_heard))
+    print()
 
 if __name__ == "__main__":
     main()

@@ -52,7 +52,9 @@ def main():
     heard = " "
     also_heard = " "
     print("what the fox says: " + heard.join(fox_says)) 
+    print()
     print("also heard: " + also_heard.join(heard_list))
+    print()
 
 if __name__ == "__main__":
     main()
