@@ -1,6 +1,6 @@
 import unittest
-from gradescope_utils.autograder_utils.decorators import weight, number
-from gradescope_utils.autograder_utils.files import check_submitted_files
+#from gradescope_utils.autograder_utils.decorators import weight, number
+#from gradescope_utils.autograder_utils.files import check_submitted_files
 from io import StringIO
 from unittest.mock import patch
 
@@ -11,12 +11,11 @@ class TestHW1(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         pass
-
-
-    @weight(2)
-    @number("1.2")
+    #@weight(2)
+    #@number("1.2")
+    
     def test_02(self):
-        """Create a TwoStack and push 1 item on each stack"""
+        #Create a TwoStack and push 1 item on each stack
         ts = TwoStack()
         ts.push1('Kevin')
         ts.push2('Molloy')
@@ -40,12 +39,12 @@ class TestHW1(unittest.TestCase):
         v2 = ts2.pop2()
         self.assertEqual("Molloy",v1, "First pop")        
         self.assertEqual("Kevin",v2, "First pop")        
-
+    
                
-    @weight(2)
-    @number("1.3")
+    #@weight(2)
+    #@number("1.3")
     def test_03(self):
-        """Push 3 items and make sure list length is 4"""
+        #Push 3 items and make sure list length is 4
         ts = TwoStack()
         ts.push2('1')
         ts.push2('2')
@@ -54,10 +53,10 @@ class TestHW1(unittest.TestCase):
         self.assertEqual(4, ts.capacity(), 
             "After 3 pushes, stack capacity should  be 4")
 
-    @weight(2)
-    @number("1.4")
+   # @weight(2)
+   # @number("1.4")
     def test_04(self):
-        """Push 3 times and pop once, list length should shrink to 2"""
+        #Push 3 times and pop once, list length should shrink to 2
         ts = TwoStack()
         ts.push1('1')
         ts.push1('2')
@@ -67,11 +66,11 @@ class TestHW1(unittest.TestCase):
 
         self.assertEqual(2, ts.capacity(), 
             "After 3 pushes and one pop, stack capacity should  be 2")
-
-    @weight(2)
-    @number("1.5")
+    
+   # @weight(2)
+   # @number("1.5")
     def test_05(self):
-        """pushing and popping from both stacks -- checking pop returns"""
+        #pushing and popping from both stacks -- checking pop returns
         ts = TwoStack()
         ts.push1(1)
         ts.push2(4)
@@ -92,10 +91,10 @@ class TestHW1(unittest.TestCase):
         self.assertEqual(2, ts.capacity(), 
             "After 3 pushes and two pops, stack capacity should remain at 2")
 
-    @weight(1)
-    @number("1.6")
+  #  @weight(1)
+  #  @number("1.6")
     def test_06(self):
-        """Checking pushes and pops to both stacks and top function"""
+        #Checking pushes and pops to both stacks and top function
         ts = TwoStack()
         for i in range(8):
             ts.push1(i)
@@ -105,12 +104,11 @@ class TestHW1(unittest.TestCase):
         self.assertEqual(9,ts.top2(), "Top of stack 2 should be a 9")
         self.assertEqual(9,ts.top2(), "Top should not change the stack" + \
             "(it just peeks)")
-
-    @weight(2)
-    @number("1.7")
+    
+  #  @weight(2)
+  #  @number("1.7")
     def test_07(self):
-        """Check clearning a stack sizes the list correctly and preserves
-        the other stack"""
+        #Check clearning a stack sizes the list correctly and preserves the other stack
         ts = TwoStack()
         for i in range(8):
             ts.push1(i)
@@ -121,12 +119,11 @@ class TestHW1(unittest.TestCase):
             "After 9 pushes (8 stack1 1 stack2) and a clear" + \
                 "of stack 1 capacity should  be 2")
         self.assertEqual(9,ts.top2(), "Top of stack 2 should be a 9")
-
-    @weight(1)
-    @number("1.8")
+    
+  #  @weight(1)
+   # @number("1.8")
     def test_08(self):
-        """Check clearning a stack sizes the list correctly and preserves
-        the other stack"""
+        #Check clearning a stack sizes the list correctly and preserves the other stack
         ts = TwoStack()
         for i in range(8):
             ts.push2(i)
@@ -143,11 +140,11 @@ class TestHW1(unittest.TestCase):
             "After 9 pushes (8 stack1 2 stack2) and a clear" + \
                 "of stack 1 capacity should  be 8")
         self.assertEqual(7,ts.top2(), "Top of stack 2 should be a 7")
-
-    @weight(1)
-    @number("1.9")
+    
+ #   @weight(1)
+ #   @number("1.9")
     def test_09(self):
-        """Large sets of pushes and pops from each stack"""
+        #Large sets of pushes and pops from each stack
         ts = TwoStack()
         for i in reversed(range(1,21)):
             ts.push1(i)
@@ -161,11 +158,11 @@ class TestHW1(unittest.TestCase):
             "After 20 pushes and pops to stack 1")
         self.assertEqual(2, ts.capacity(), 
             "Capacity should be 2 after 20 pushes and pops")    
-
-    @weight(2)
-    @number("1.10")
+    
+ #   @weight(2)
+ #   @number("1.10")
     def test_10(self):
-        """Large sets of pushes and pops from each stack"""
+        #Large sets of pushes and pops from each stack
         ts = TwoStack()
         for i in range(1,21):
             ts.push1(i)
@@ -203,11 +200,11 @@ class TestHW1(unittest.TestCase):
      
         self.assertEqual(2, ts.capacity())
         self.assertEqual("Kevin", ts.top2(), "only this element should be on stack2")
-        
-    @weight(2)
-    @number("1.11")
+      
+ #   @weight(2)
+  #  @number("1.11")
     def test_11(self):
-        """Test of exceptions for stack underflow"""
+        #Test of exceptions for stack underflow
         ts = TwoStack()
         failed = True
         try:

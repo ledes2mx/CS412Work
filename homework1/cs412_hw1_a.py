@@ -1,10 +1,19 @@
 class TwoStack:
     # Creates two empty stacks stored in a single underlying list with length 2. List must never shrink below this size.
     def __init__(self):
-        self.stack1 = [None] * 2
-        self.stack2 = [None] * 2
+        self.stack1 = []
+        self.stack2 = []
         self.under = self.stack1 + self.stack2
-        self.underLen = len(self.under)
+        self.underSize = 2
+
+    def newList(self):
+        n = self.underSize - len(self.stack1+self.stack2)
+        between = [None] * n
+        self.under = self.stack1 + between + self.stack2
+        self.underSize = len(self.under)
+        while len(self.under) < 2:
+            self.under = self.under + [None]
+            self.underSize = len(self.under)
 
     # Return the size of the underlying list, only used for testing.
     def capacity(self):
@@ -26,17 +35,28 @@ class TwoStack:
         the old list). This method does not return anything.
     """
     def clear1(self):
-        self.stack1 = [None] * 2
-        if len(self.under) / 2 >= len(self.stack1 + self.stack2):
-            #Remove everything that has [None] in it, reduced by half
-            self.under = self.stack1 + self.stack2
+        self.stack1 = []
+        self.under = self.stack1 + self.stack2
+        self.underSize = len(self.under)
+        power = self.nextPow()
+        #print(power)
+        self.underSize = 2**power
+        self.newList()
     
     # Same as clear1, just on stack 2
     def clear2(self):
-        self.stack2 = [None] * 2
-        if len(self.under) / 2 >= len(self.stack1 + self.stack2):
-            #Remove everything that has [None] in it, reduced by half
-            self.under = self.stack1 + self.stack2
+        self.stack2 = []
+        self.under = self.stack1 + self.stack2
+        self.underSize = len(self.under)
+        power = self.nextPow()
+        self.underSize = 2**power
+        self.newList()
+
+    def nextPow(self):
+        count = 1
+        while 2**count < self.underSize:
+            count += 1
+        return count
 
     """
         This method adds v to stack1. If the underlying list is full, then a new underlying list with
@@ -45,14 +65,19 @@ class TwoStack:
     """
     def push1(self, v):
         if len(self.under) == len(self.stack1 + self.stack2):
-            self.under = self.under + [None] * len(self.under)
+            self.under = self.under + [None] * self.underSize
+            self.underSize = len(self.under)
         self.stack1 = self.stack1 + [v]
+        self.newList()
+    
 
     # Same as push1, just on stack 2
     def push2(self, v):
         if len(self.under) == len(self.stack1 + self.stack2):
             self.under = self.under + [None] * len(self.under)
+            self.underSize = len(self.under)
         self.stack2 = [v] + self.stack2
+        self.newList()
 
     """
         This method removes an item from stack1 and returns it. If the stack is empty, then the pop
@@ -63,17 +88,40 @@ class TwoStack:
         size).
     """
     def pop1(self):
-        
-        pass
+        if self.stack1[-1] == None:
+            #Throw exception if stack is empty
+            pass
+        val = self.stack1[-1]
+        del self.stack1[-1]
+        if len(self.under) / 2 >= len(self.stack1 + self.stack2):
+            self.under = self.stack1 + self.stack2
+            self.underSize = len(self.under)
+            self.newList()
+        return val
     
     # Same as pop1, but on 2
     def pop2(self):
-        pass
+        if self.stack2[0] == None:
+            #Throw exception if stack is empty
+            pass
+        val = self.stack2[0]
+        del self.stack2[0]
+        if len(self.under) / 2 >= len(self.stack1 + self.stack2):
+            self.under = self.stack1 + self.stack2
+            self.underSize = len(self.under)
+            self.newList()
+        return val
 
     # Return top value on stack1, if empty, thow exception
     def top1(self):
-        pass
+        if self.stack1[-1] == None:
+            #throw exception
+            raise Exception("There is nothing here, move along!")
+        return self.stack1[-1]
 
     # Same as top1, but on stack2
-    def top2():
-        pass
+    def top2(self):
+        if self.stack2[0] == None:
+            #throw exception
+            raise Exception("There is nothing here, move along!")
+        return self.stack2[0]
