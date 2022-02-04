@@ -29,17 +29,30 @@ def merge(list, m):
     temp = [0 for _ in range(n)]
     for k in range(n):
         if j >= n:
+            print("First if statement!")
+            print(temp)
             temp[k] = list[i]
+            print(temp)
             i += 1
         elif i >= m:
+            print("Second if statement!")
+            print(temp)
             temp[k] = list[j]
+            print(temp)
             j += 1
         elif list[i] <= list[j]:
+            print("Third if statement!")
+            print(temp)
             temp[k] = list[i]
+            print(temp)
             i += 1
         else:
+            print("Else statement!")
+            print(temp)
             temp[k] = list[j]
+            print(temp)
             j += 1
+    print("Putting it all together!")
     for k in range(n):
         list[k] = temp[k]
 def main():
