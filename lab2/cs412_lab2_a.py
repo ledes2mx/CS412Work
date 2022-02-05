@@ -16,9 +16,6 @@ def searcher(list, search_key, position):
     right = list[mid:]
     #print(left)
     #print( right)
-    if right[0] == search_key:
-        print(position + 1)
-        return position+1
     if search_key >= right[0] and search_key <= right[-1]:
         #print(position + list.index(right[0]))
         searcher(right, search_key, position + list.index(right[0]))
