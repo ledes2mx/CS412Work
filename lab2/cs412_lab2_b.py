@@ -42,7 +42,7 @@ def merge(list, m):
             temp[k] = list[i]
             i += 1
         else:
-            invCount += 1
+            invCount += (j-k)
             temp[k] = list[j]
             j += 1
     for k in range(n):
@@ -51,6 +51,6 @@ def merge(list, m):
 def main():
     list = [int(x) for x in input().split(" ")]
     print(mergesort(list))
-    
+
 if __name__ == "__main__":
     main()
