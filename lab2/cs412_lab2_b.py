@@ -22,7 +22,7 @@ def mergesort(list):
             list[j] = right[j - m]
         
         # Run the merge operation on A
-        merge(list,m)
+        invCount += merge(list,m)
 
     return invCount
         
@@ -33,31 +33,24 @@ def merge(list, m):
     temp = [0 for _ in range(n)]
     for k in range(n):
         if j >= n:
-            print(temp)
             temp[k] = list[i]
-            print(temp)
             i += 1
         elif i >= m:
-            print(temp)
             temp[k] = list[j]
-            print(temp)
             j += 1
         elif list[i] <= list[j]:
-            print(temp)
             temp[k] = list[i]
-            print(temp)
             i += 1
         else:
             invCount += 1
-            print(temp)
             temp[k] = list[j]
-            print(temp)
             j += 1
     for k in range(n):
         list[k] = temp[k]
     return invCount
 def main():
     list = [int(x) for x in input().split(" ")]
-    mergesort(list)
+    print(mergesort(list))
+    
 if __name__ == "__main__":
     main()
