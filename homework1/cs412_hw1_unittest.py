@@ -13,7 +13,6 @@ class TestHW1(unittest.TestCase):
         pass
     #@weight(2)
     #@number("1.2")
-    
     def test_02(self):
         #Create a TwoStack and push 1 item on each stack
         ts = TwoStack()
@@ -39,7 +38,6 @@ class TestHW1(unittest.TestCase):
         v2 = ts2.pop2()
         self.assertEqual("Molloy",v1, "First pop")        
         self.assertEqual("Kevin",v2, "First pop")        
-    
                
     #@weight(2)
     #@number("1.3")
@@ -66,7 +64,7 @@ class TestHW1(unittest.TestCase):
 
         self.assertEqual(2, ts.capacity(), 
             "After 3 pushes and one pop, stack capacity should  be 2")
-    
+   
    # @weight(2)
    # @number("1.5")
     def test_05(self):
@@ -104,7 +102,7 @@ class TestHW1(unittest.TestCase):
         self.assertEqual(9,ts.top2(), "Top of stack 2 should be a 9")
         self.assertEqual(9,ts.top2(), "Top should not change the stack" + \
             "(it just peeks)")
-    
+
   #  @weight(2)
   #  @number("1.7")
     def test_07(self):
@@ -119,7 +117,7 @@ class TestHW1(unittest.TestCase):
             "After 9 pushes (8 stack1 1 stack2) and a clear" + \
                 "of stack 1 capacity should  be 2")
         self.assertEqual(9,ts.top2(), "Top of stack 2 should be a 9")
-    
+
   #  @weight(1)
    # @number("1.8")
     def test_08(self):
@@ -224,7 +222,6 @@ class TestHW1(unittest.TestCase):
 
         self.assertTrue(failed,"pop of an empty stack2 should" +
              " throw an exception")
-    
 
         try:
             ts.top1()

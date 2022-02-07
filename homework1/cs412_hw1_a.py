@@ -3,12 +3,12 @@ class TwoStack:
     def __init__(self):
         self.stack1 = 0
         self.stack2 = 0
-        self.under = []
+        self.under = [None] * 2
         self.underSize = 2
 
     # Return the size of the underlying list, only used for testing.
     def capacity(self):
-        return len(self.under)
+        return self.underSize
 
     # Returns the number of elements in stack 1
     def size1(self):
@@ -28,7 +28,7 @@ class TwoStack:
     def clear1(self):
         #self.stack1 = []
         
-        self.underSize = len(self.under) - self.stack1
+        self.underSize = self.stack2
         power = self.nextPow()
         self.underSize = 2**power
         temp = [None]*self.underSize
@@ -36,12 +36,13 @@ class TwoStack:
             temp[-(i+1)] = self.under[-(i+1)]
         self.stack1 = 0
         self.under = temp
+        self.underSize = len(self.under)
     
     # Same as clear1, just on stack 2
     def clear2(self):
         #self.stack2 = []
         
-        self.underSize = len(self.under) - self.stack2
+        self.underSize = self.stack1
         power = self.nextPow()
         self.underSize = 2**power
         temp = [None]*self.underSize
@@ -49,6 +50,7 @@ class TwoStack:
             temp[i] = self.under[i]
         self.stack2 = 0
         self.under = temp
+        self.underSize = len(self.under)
 
     def nextPow(self):
         count = 1
@@ -57,7 +59,7 @@ class TwoStack:
         return count
 
     def push1(self, v):
-        if len(self.under) == self.stack1 + self.stack2:
+        if self.underSize == self.stack1 + self.stack2:
             self.doubled()
         self.under[self.stack1] = v
         self.stack1 += 1
@@ -87,12 +89,13 @@ class TwoStack:
         size).
     """
     def pop1(self):
-        if self.under[self.stack1] == None:
+        if self.under[0] == None:
             raise Exception("There is nothing here, move along!")
         self.stack1 -= 1
-        if self.underSize/2 >= self.stack1 + self.stack2:
+        popped = self.under[self.stack1]
+        if self.underSize/2 == self.stack1 + self.stack2:
             self.halved()
-        return self.under[self.stack1]
+        return popped
     
     # Same as pop1, but on 2
     def pop2(self):
@@ -105,24 +108,27 @@ class TwoStack:
         return popped
 
     def halved(self):
-        self.underSize /= 2
-        temp = [None]*self.underSize
+        half = int(self.underSize/2)
+        if half < 2:
+            half = 2
+        temp = [None]*half
         for i in range(self.stack1):
             temp[i] = self.under[i]
         for i in range(self.stack2):
             temp[-(i+1)] = self.under[-(i+1)]
         self.under = temp
+        self.underSize = len(self.under)
 
     # Return top value on stack1, if empty, thow exception
     def top1(self):
-        if self.under[self.stack1] == None:
+        if self.under[0] == None:
             #throw exception
             raise Exception("There is nothing here, move along!")
         return self.stack1[-1]
 
     # Same as top1, but on stack2
     def top2(self):
-        if self.stack2[-1] == None:
+        if self.under[-1] == None:
             #throw exception
             raise Exception("There is nothing here, move along!")
         return self.under[-(self.stack2)]
