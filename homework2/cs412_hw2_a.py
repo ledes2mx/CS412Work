@@ -12,29 +12,39 @@ def main():
         minVal = num
         maxVal = num
     num = findVals(equation)
+    for i in num:
+        if minVal > i:
+            minVal = i
+        if maxVal < i:
+            maxVal = i
+    print(minVal, end=" ")
+    print(maxVal)
 
 def findVals(equation):
-    store = []
+    finalStore = []
+    store1 = []
+    store2 = []
     if len(equation) == 1:
-        num = int(equation[0])
-        return num
+        temp = [int(equation[0])]
+        return temp
     for i in range (1, len(equation), 2):
         op = equation[i]
         left = equation[:i]
         right = equation[i+1:]
-        
-        if op == '+':
-            num = int(findVals(left) + findVals(right))
-            #print(num)
-        if op == '-':
-            num = int(findVals(left) - findVals(right))
-            #print(num)
-        if op == '*':
-            num = int(findVals(left) * findVals(right))
-            #print(num)
-        print("FINAL NUM")
-        print(num)
-    return num
+        store1 = findVals(left)
+        store2 = findVals(right)
+        for j in store1:
+            for k in store2:
+                if op == '+':
+                   finalStore = finalStore +  [j + k]
+                    #print(num)
+                if op == '-':
+                    finalStore = finalStore +  [j - k]
+                    #print(num)
+                if op == '*':
+                    finalStore = finalStore +  [j * k]
+                    #print(num)
+    return finalStore
 
 
 if __name__ == "__main__":
