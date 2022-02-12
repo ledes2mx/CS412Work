@@ -10,14 +10,26 @@ def main():
         print(paliCheck(lines[i], 0))
 
 def paliCheck(word, count):
+    count = 0
+    count2 = 0
     for i in range(len(word)):
         left = word[:i+1]
         right = word[i+1:]
+        
+        print("LEFT")
         print(left)
+        print("RIGHT")
+        print(right)
+        
         if isPalindrome(left):
+            print("COUNT")
             count += 1
-        paliCheck(right, count)
-    return count
+        count2 = paliCheck(right, 0)
+    if 1 < count:
+        return count -1
+    else:
+        return 1
+        
 
     """
     for i in range(len(word)):
