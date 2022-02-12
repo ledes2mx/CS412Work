@@ -5,30 +5,32 @@ def main():
     lines = []
     for _ in range (n):
         lines = lines + [input()]
-    print(lines)
+    #print(lines)
     for i in range (len(lines)):
-        print(paliCheck(lines[i], 0))
+        print(paliCheck(lines[i]))
 
-def paliCheck(word, count):
+def paliCheck(word):
     count = 0
     count2 = 0
     for i in range(len(word)):
         left = word[:i+1]
         right = word[i+1:]
-        
+        """
         print("LEFT")
         print(left)
         print("RIGHT")
         print(right)
-        
+        """
         if isPalindrome(left):
-            print("COUNT")
+            #print("COUNT")
             count += 1
-        count2 = paliCheck(right, 0)
-    if 1 < count:
-        return count -1
-    else:
-        return 1
+        else:
+            count2 = paliCheck(word[i:])
+            if count2 > 1:
+                count += count2 - 1
+        #print(count)
+    return count
+
         
 
     """
