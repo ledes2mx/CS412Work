@@ -9,11 +9,13 @@ def main():
     #minParts = findParts(parts, length, -1)
     for i in range(-1,-(len(parts)+1), -1):
         partsCollection = partsCollection + [findParts(parts, length, i)]
+    #print(partsCollection)
     for i in range(len(partsCollection)):
         if len(partsCollection[i]) < minVal:
             minVal = len(partsCollection[i])
             smallIndex = i
     smallest = partsCollection[smallIndex]
+    #print(smallest)
     
     numParts = 0
     for part in parts:
