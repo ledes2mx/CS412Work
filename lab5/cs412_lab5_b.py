@@ -7,17 +7,24 @@ def main():
         lines = lines + [input()]
     #print(lines)
     for i in range (len(lines)):
-        print(paliCheck(lines[i], 1))
+        print(paliCheck(lines[i]))
 
-def paliCheck(word, index):
-    count = 0
-    if len(word) <= 1:
-        return 1
-    for index2 in range(index, len(word)+1):
-        left = word[:index2]
-        if isPalindrome(left):
-            count += paliCheck(word, index + 1)
-    return count
+def paliCheck(word):
+    def countPalis(word, index):
+        count = 0
+        if len(word) <= 1:
+            return 1
+        backend = word[index:]
+        #print(backend)
+        if len(backend) <= 1:
+            #print("Last one")
+            return 1
+        for i in range(index+1, len(word)+1):
+            #print(i)
+            if isPalindrome(word[index:i]):
+                count += countPalis(word, i)
+        return count
+    return countPalis(word, 0)
     """
     count = 0
     if len(word) <= 1:
