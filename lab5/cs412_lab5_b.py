@@ -19,6 +19,9 @@ def paliCheck(word):
         if len(backend) <= 1:
             #print("Last one")
             return 1
+        frontend = word[:index+1]
+        if len(frontend) <= 1:
+            return 1 + countPalis(word, index+1)
         for i in range(index+1, len(word)+1):
             #print(i)
             if isPalindrome(word[index:i]):
