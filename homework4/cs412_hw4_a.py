@@ -9,12 +9,15 @@ def part_finder(part_sizes, target):
         part_sizes = array of part lengths sorted in ascending order
         target = size of rocket to assemble
     """
+    storage = [[None]*(target+1)]*(len(part_sizes) + 1)
     def part_recurs(part_index, t_remaining):
         """
             part_index = part to use
             tremaining = rocket length to assemble
         """
-            
+        if storage[part_index][t_remaining]:
+            return storage[part_index][t_remaining]
+        
         if t_remaining == 0: return [0] * len(part_sizes)
         if part_index == -1: return [sys.maxsize] * len(part_sizes)
         best_cost = sys.maxsize
@@ -27,6 +30,7 @@ def part_finder(part_sizes, target):
             if this_list_count < best_cost:
                 best_cost = this_list_count
                 best_list = this_list
+        storage[part_index][t_remaining] = best_list
         return best_list
     
     return part_recurs(len(part_sizes) - 1, target)

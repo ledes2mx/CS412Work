@@ -25,19 +25,7 @@ def paliCheck(word):
         storage[index] = count
         return count
     return countPalis(word, 0)
-    """
-    count = 0
-    if len(word) <= 1:
-        return 1
-    for i in range(1, len(word) + 1):
-        left = word[:i]
-
-        if isPalindrome(left):
-            count += paliCheck(word[i:])
-
-    return count
-    """
-
+    
 def isPalindrome(pal):
     return pal == pal[::-1]
 
