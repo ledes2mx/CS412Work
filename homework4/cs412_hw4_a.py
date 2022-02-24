@@ -16,6 +16,7 @@ def part_finder(part_sizes, target):
             tremaining = rocket length to assemble
         """
         if storage[part_index][t_remaining]:
+            #print(storage[part_index][t_remaining])
             return storage[part_index][t_remaining]
         
         if t_remaining == 0: return [0] * len(part_sizes)
@@ -31,15 +32,17 @@ def part_finder(part_sizes, target):
                 best_cost = this_list_count
                 best_list = this_list
         storage[part_index][t_remaining] = best_list
+        #print(storage)
         return best_list
     
-    return part_recurs(len(part_sizes) - 1, target)
+    return part_recurs(len(part_sizes)-1, target)
 def main():
     part_sizes = [int(x) for x in input().split()]
     t = int(input())
     nums = 0
     i = 0
     rocket_pieces = part_finder(part_sizes, t)
+    print(rocket_pieces)
     for piece in rocket_pieces:
         print(piece, "of length", part_sizes[i])
         nums += piece
