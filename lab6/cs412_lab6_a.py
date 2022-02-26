@@ -1,5 +1,7 @@
 """
 lab 6 Miguel Ledesma
+Algo analysis: This algorithm runs in O(n^2) time from
+line 40 to 45
 """
 def isPalindrone(s):
     return s == s[::-1]
@@ -22,6 +24,8 @@ def countPalindrones(word):
         print(optimal_counts)
         return count
         """
+        """
+        DOESNT WORK FOR THE TEST BUB
         for i in range(len(word)-1, -1, -1):
             storage[i] = storage[i+1]
             for j in range(i+1, len(word) + 1):
@@ -31,7 +35,8 @@ def countPalindrones(word):
         
         return (storage[0] + 1)
         """
-        NOT REALLY A LOOKUP
+        
+        #NOT REALLY A LOOKUP ??? 
         for i in range(start, len(word)):
             if i != 0:
                 storage[i] = storage[i-1]
@@ -39,7 +44,7 @@ def countPalindrones(word):
                 if isPalindrone(word[i:j]):
                     storage[i] += 1
         return storage[len(word)-1]
-        """
+        
     return cPalindrones(0)
 def main():
     n = int(input())
