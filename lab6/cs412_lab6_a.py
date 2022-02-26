@@ -18,7 +18,7 @@ def countPalindrones(word):
             for j in range(start, i):
                 if isPalindrone(word[j:i]):
                     storage[i] += storage[j]
-        print(storage)
+        #print(storage)
         # return last
         return storage[-1]
         """"
