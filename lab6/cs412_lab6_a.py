@@ -11,7 +11,7 @@ def countPalindrones(word):
     #print(storage)
     # THIS WORkS??????
     def cPalindrones(start):
-        for i in range(len(word) + 1):
+        for i in range(start, len(word) + 1):
             for j in range(i):
                 if isPalindrone(word[j:i]):
                     storage[i] += storage[j]
