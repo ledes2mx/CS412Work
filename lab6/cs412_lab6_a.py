@@ -7,19 +7,15 @@ def isPalindrone(s):
     return s == s[::-1]
 def countPalindrones(word):
     optimal_counts = {}
-    storage = [[0]*(len(word)+1)]*(len(word)+1)
-    print(storage)
+    storage = [1] + [0]*len(word)
+    #print(storage)
+    # THIS WORkS??????
     def cPalindrones(start):
-        if start == len(word):
-            return 1
-        for i in range(start, len(word)):
-            for j in range(i +1, len(word)):
-                if isPalindrone(word[i:j]):
-                    storage[i][j] += 1
-                if storage[i][i] != 1:
-                    storage[i][j] = (storage[i][j-1] + storage[i-1][j] + 1 - storage[i-1][j-1])
-                print(storage)
-        return storage[len(word)-1][len(word)-1]
+        for i in range(len(word) + 1):
+            for j in range(i):
+                if isPalindrone(word[j:i]):
+                    storage[i] += storage[j]
+        return storage[-1]
         """"
         if isPalindrone(word[start:i+1]):
             if i+1 not in optimal_counts:
