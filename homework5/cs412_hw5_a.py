@@ -30,8 +30,8 @@ def part_finder(part_sizes, target):
             remaining = t_remaining
             storage[i][part_index] = remaining//part_sizes[part_index]
             remaining = remaining - (remaining//part_sizes[part_index] * part_sizes[part_index])
-            #print("REMAINING", remaining)
-            #print("Part Size: ",part_sizes[part_index])
+            print("REMAINING", remaining)
+            print("Part Size: ",part_sizes[part_index])
             #print("REMAINING: ",t_remaining - 
                 #(t_remaining//part_sizes[part_index] * part_sizes[part_index]))
             # GO FROM THE NEXT PART TO THE LAST PART, ADD THE PARTS REQUIRED IN (excluding current)
@@ -52,12 +52,12 @@ def part_finder(part_sizes, target):
                 best_cost = this_list_count
                 best_list = this_list
             """
-        #print(storage)
+        print(storage)
         #print(storage)
         best_cost = sys.maxsize
         best_list = []
         for i in storage:
-            if sum(i) < best_cost:
+            if sum(i) < best_cost and sum(i) != 0:
                 best_cost = sum(i)
                 best_list = i
         return best_list
