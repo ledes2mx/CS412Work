@@ -1,0 +1,21 @@
+# BOTH THE LISTS ARE OF THE SAME LENGTH, BUT DIFFERENT
+# ASSUME THE weights IS DECLARED OUTSIDE OF THIS AND IS STILL IN SCOPE
+
+def findWeight(values, weights, weightRemaining):
+    best = 0
+    taken = 0
+    not_taken = 0
+    if weightRemaining == 0:
+        best = 0
+    if weightRemaining >= weights[0]:
+        taken = values[0] + findWeight(weights[1:], values[1:], weightRemaining-weights[0])
+    
+    not_taken = findWeight(weights[1:], values[1:], weightRemaining)
+
+    if taken > not_taken:
+        best = taken
+    else:
+        best = not_taken
+    
+    return best
+    
