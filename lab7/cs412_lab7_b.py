@@ -13,6 +13,7 @@ def main():
     # SORT BY COST RATIO, APPARENTLY EASY TO DO LOL
     storage.sort(key=lambda col: (col[1]//col[2]), reverse = True)
     inThere = [False for _ in range(len(storage))]
+    last = [float(0.0) for _ in range(2)]
     #print(storage)
 
     # FINDING THE ITEMS ACTUALLY IN THE BAG
@@ -32,6 +33,9 @@ def main():
                 #THIS PRESUMABLY ZEROES OUT THE BAG IF IT DOESN'T ALL FIT
                 someOfIt = weightLimit / storage[i][2]
                 value += storage[i][1] * someOfIt
+                last[0] = storage[i][1] * someOfIt
+                last[1] = storage[i][2] * someOfIt
+
                 weightLimit = int(weightLimit - (storage[i][2] * someOfIt))
                 # IF IT'S ZERO, NO NEED TO DO THE OTHER THINGS
                 inThere[i] = True
@@ -41,12 +45,19 @@ def main():
 
     value = findItems(weightLimit)
 
+    print(last)
+
     #print(inThere)
     for i in range(len(storage)):
         if inThere[i]:
-            print(storage[i][0], end="(")
-            print(format(storage[i][1], ".2f"), end=", ")
-            print(format(storage[i][2], ".2f"), end=") ")
+            if i == len(storage)-1:
+                print(storage[i][0], end="(")
+                print(format(last[0], ".2f"), end=", ")
+                print(format(last[1], ".2f"), end=") ")
+            else:
+                print(storage[i][0], end="(")
+                print(format(storage[i][1], ".2f"), end=", ")
+                print(format(storage[i][2], ".2f"), end=") ")
     print()
     print(value)
 
