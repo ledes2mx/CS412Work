@@ -1,0 +1,6 @@
+11
+3
+gold 50 10
+ring 100 5
+solver 50 5
+poop 400 20

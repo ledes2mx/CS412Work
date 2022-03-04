@@ -19,3 +19,21 @@ def findWeight(values, weights, weightRemaining):
     
     return best
     
+
+REFLECTION:
+
+1. It's much easier to solve the 0-1 knapsack problem because you don't have to fit some of the item that doesn't fit
+if it doesn't fit, you don't worry about it, and you don't have to worry about sorting the list of items present,
+which takes most of the time to do.
+
+2. I think that I would just take out the part where the fraction of the item is taken and just let it ride. I think it would work
+out the same way since with this approach, the list is sorted.
+
+3. 
+    14
+    3
+    gold 50 10
+    ring 100 5
+    silver 40 5
+
+all of that would be sorted and the algorithm would take the items accordingly.
