@@ -50,7 +50,7 @@ def main():
     #print(inThere)
     for i in range(len(storage)):
         if inThere[i]:
-            if i == len(storage)-1:
+            if i == len(storage)-1 or inThere[i+1] == False:
                 print(storage[i][0], end="(")
                 print(format(last[0], ".2f"), end=", ")
                 print(format(last[1], ".2f"), end=")")
