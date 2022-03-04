@@ -45,7 +45,7 @@ def main():
 
     value = findItems(weightLimit)
 
-    print(last)
+    #print(last)
 
     #print(inThere)
     for i in range(len(storage)):
