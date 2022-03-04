@@ -45,8 +45,8 @@ def main():
     for i in range(len(storage)):
         if inThere[i]:
             print(storage[i][0], end="(")
-            print(storage[i][1], end=", ")
-            print(storage[i][2], end=") ")
+            print(format(storage[i][1], ".2f"), end=", ")
+            print(format(storage[i][2], ".2f"), end=") ")
     print()
     print(value)
 
