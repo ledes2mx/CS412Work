@@ -53,7 +53,7 @@ def main():
             if i == len(storage)-1:
                 print(storage[i][0], end="(")
                 print(format(last[0], ".2f"), end=", ")
-                print(format(last[1], ".2f"), end=") ")
+                print(format(last[1], ".2f"), end=")")
             else:
                 print(storage[i][0], end="(")
                 print(format(storage[i][1], ".2f"), end=", ")
