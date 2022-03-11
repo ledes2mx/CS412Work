@@ -29,6 +29,8 @@ def main():
             stack.pop()
             if current not in visited:
                 path.append(current)
+                if path[-1] == finish:
+                    break
                 visited.add(current)
                 for nextStop in routes[current]:
                     stack.append((current,nextStop))
