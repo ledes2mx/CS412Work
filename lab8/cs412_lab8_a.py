@@ -24,7 +24,7 @@ def main():
         stack = deque([(0,init)])
         path = deque([])
         while len(stack) != 0:
-            print(stack)
+            #print(stack)
             past, current = stack[-1]
             stack.pop()
             if current not in visited:
