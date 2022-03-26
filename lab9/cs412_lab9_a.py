@@ -4,7 +4,7 @@ def main():
     numNodes = int(input())
     nodes = {}
     for i in range(numNodes):
-        touching = input().split(" ")
+        touching = input().split()
         node = touching[0]
         if node not in nodes:
                 nodes[node] = set()
