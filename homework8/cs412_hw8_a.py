@@ -55,20 +55,25 @@ def main():
  
     m = int(input())
 
-    print(node_parents)
+    #print(node_parents)
 
     pre = 0
     post = 1
     for i in range(m):
         current, to = input().split()
-        print(node_parents[to], marked[current])
-        if prePost[current][pre] < prePost[to][pre] < prePost[to][post] < prePost[current][post]:
-            if node_parents[to] == nodes[current]:
-                print("TREE EDGE")
-            else:
-                print("FORWARD EDGE")
-        elif prePost[to][pre] < prePost[current][pre] < prePost[current][post] < prePost[to][post]:
-            print("BACK EDGE")
+        print(current, to, end=" ")
+        if to in nodes[current]:
+            if prePost[current][pre] < prePost[to][pre] < prePost[to][post] < prePost[current][post]:
+                if node_parents[to] == current:
+                    print("tree edge")
+                else:
+                    print("forward edge")
+            elif prePost[to][pre] < prePost[current][pre] < prePost[current][post] < prePost[to][post]:
+                print("back edge")
+            elif prePost[to][post] < prePost[current][pre]:
+                print("cross edge")
+        else:
+            print("illegal edge")
 
 if __name__ == "__main__":
     main()
