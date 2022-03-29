@@ -49,14 +49,26 @@ def main():
 
     node_parents, prePost = dfsALL(dfsOrder)
 
-    print("NODE PARENTS", node_parents)
-    print("PRE AND POST", prePost)
-
+    #print("NODE PARENTS", node_parents)
+    # PRINT TUPLE VALUE!!! THE VALUES CANNOt CHANGE!!!
+    #print("PRE AND POST", prePost['A'][1])
+ 
     m = int(input())
 
+    print(node_parents)
+
+    pre = 0
+    post = 1
     for i in range(m):
         current, to = input().split()
-        print(current, to)
+        print(node_parents[to], marked[current])
+        if prePost[current][pre] < prePost[to][pre] < prePost[to][post] < prePost[current][post]:
+            if node_parents[to] == nodes[current]:
+                print("TREE EDGE")
+            else:
+                print("FORWARD EDGE")
+        elif prePost[to][pre] < prePost[current][pre] < prePost[current][post] < prePost[to][post]:
+            print("BACK EDGE")
 
 if __name__ == "__main__":
     main()
