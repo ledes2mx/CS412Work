@@ -14,6 +14,8 @@ def main():
         if curr1 not in connections:
             connections[curr1] = set()
         connections[curr1].add(curr2)
+        if curr2 not in connections:
+            connections[curr2] = set()
         rate = float(rate)
         exchanges[(curr1, curr2)] = rate
     #print(connections)
