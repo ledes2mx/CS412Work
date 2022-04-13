@@ -1,3 +1,6 @@
+1
+USD CAN 0.6
+
 2
 USD GBP 1.0
 GBP USD 1.0

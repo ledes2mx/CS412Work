@@ -68,6 +68,8 @@ def main():
                         negative = True
                     past = node
                     path = [node] + findArbitrage(connect)
+            if len(connections[node]) == 0:
+                negative = False
             return path
         path = findArbitrage(start)
 
