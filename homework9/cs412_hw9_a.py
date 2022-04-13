@@ -74,7 +74,7 @@ def main():
         path = findArbitrage(start)
 
         adjust = 1
-        if negative == True:
+        if negative == True and path[0] == path[-1] and len(path) > 1:
             print("Arbitrage Detected")
             for i in range(len(path)):
                 if i == len(path)-1:

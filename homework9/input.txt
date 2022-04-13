@@ -1,5 +1,6 @@
 1
 USD CAN 0.6
+CAN MEX 0.4
 
 2
 USD GBP 1.0
