@@ -57,7 +57,7 @@ def main():
             for item in path:
                 capacities[item][0] = smallVolume
         return reachable, nodesReached
-    reachable = True
+    reachable, reached = bfs()
     while reachable:
         reachable, reached = bfs()
     flow = 0
