@@ -46,7 +46,7 @@ def main():
         smallVolume = sys.maxsize
         if reachable:
             front, back = search[-1]
-            while front != 0:
+            while front != nodes[0]:
                 for i in reversed(range(len(search))):
                     if search[i][1] == front:
                         if smallVolume > capacities[(front, back)][1]-capacities[(front, back)][0]:
