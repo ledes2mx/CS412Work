@@ -26,7 +26,7 @@ def main():
         search = []
         reachable = False
         nodesReached = set()
-        while queue:
+        while len(queue) > 0:
             past, current = queue[0]
             visited.add(current)
             if current == nodes[-1]:
@@ -55,7 +55,7 @@ def main():
                         back = front
                         front = search[i][0]
             for item in path:
-                capacities[item][0] = smallVolume
+                capacities[item][0] += smallVolume
         return reachable, nodesReached
     reachable, reached = bfs()
     while reachable:
