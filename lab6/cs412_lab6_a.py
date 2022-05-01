@@ -21,34 +21,6 @@ def countPalindrones(word):
         #print(storage)
         # return last
         return storage[-1]
-        """"
-        if isPalindrone(word[start:i+1]):
-            if i+1 not in optimal_counts:
-                optimal_counts[i+1] = cPalindrones(i+1)
-            count += optimal_counts[i+1]
-        """
-        #return count
-        """
-        DOESNT WORK FOR THE TEST BUB
-        for i in range(len(word)-1, -1, -1):
-            storage[i] = storage[i+1]
-            for j in range(i+1, len(word) + 1):
-                if len(word[i:j]) > 1:
-                    if isPalindrone(word[i:j]):
-                        storage[i] += 1
-        
-        return (storage[0] + 1)
-        """
-        """
-        #NOT REALLY A LOOKUP ??? 
-        for i in range(start, len(word)):
-            if i != 0:
-                storage[i] = storage[i-1]
-            for j in range(i+1, len(word)):
-                if isPalindrone(word[i:j]):
-                    storage[i] += 1
-        return storage[len(word)-1]
-        """
     return cPalindrones(0)
 def main():
     n = int(input())
